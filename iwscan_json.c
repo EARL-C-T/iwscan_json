@@ -63,7 +63,7 @@ cJSON *jscn_scn_json(wireless_scan w) {
   cJSON_AddItemToObject(scn, "ap_addr", skadd);
   cJSON *config = jscn_b_json(w.b);
   cJSON_AddItemToObject(scn, "config", config);
-  cJSON_AddNumberToObject(scn, "has_stats", w.has_stats);
+
   cJSON *stats = jscn_stats_json(w.stats);
   cJSON_AddItemToObject(scn, "stats", stats);
   cJSON_AddNumberToObject(scn, "has_bitrate", w.has_maxbitrate);
@@ -109,7 +109,6 @@ int jscn_print_file(const char *fp, cJSON *scn) {
     exit(ERR);
   }
   char *r = cJSON_Print(scn);
-  printf("%s\n", r);
   fputs(r, f);
   fclose(f);
   return 0;

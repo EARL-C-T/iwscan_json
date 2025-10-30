@@ -4,17 +4,17 @@ int main(int argc, char **argv) {
   char *ifname;
   char *fp;
   int ERR;
-  if (argc == 0) {
+  if (argc == 1) {
     ERR = EINVAL;
     exit(ERR);
-  } else if (argc == 1) {
-    ifname = argv[2];
-    fp = "jscn_rslt.json";
   } else if (argc == 2) {
+    ifname = argv[1];
+    fp = "jscn_rslt.json";
+  } else if (argc == 3) {
     ifname = argv[1];
     fp = argv[2];
 
-  } else {
+  } else if (argc > 3) {
     ERR = E2BIG;
     exit(ERR);
   }
