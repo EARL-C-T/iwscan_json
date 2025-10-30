@@ -102,14 +102,14 @@ cJSON *jscn_iwscan_json(char *ifname) {
     exit(ERR);
   }
 }
-int jscn_print_file(char *fp, cJSON *scn) {
+int jscn_print_file(const char *fp, cJSON *scn) {
   FILE *f = fopen(fp, "w");
   if (f == NULL) {
     int ERR = errno;
     exit(ERR);
   }
   char *r = cJSON_Print(scn);
-  fprint("%s\n", r);
+  printf("%s\n", r);
   fputs(r, f);
   fclose(f);
   return 0;

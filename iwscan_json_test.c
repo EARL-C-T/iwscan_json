@@ -4,15 +4,15 @@ int main(int argc, char **argv) {
   char *ifname;
   char *fp;
   int ERR;
-  if (argc < 1) {
+  if (argc == 0) {
     ERR = EINVAL;
     exit(ERR);
-  } else if (argc < 2) {
-    strcpy(argv[1], ifname);
-    fp = "/tmp/jscn_rslt.json";
-  } else if (argc < 3) {
-    strcpy(ifname, argv[1]);
-    strcpy(fp, argv[2]);
+  } else if (argc == 1) {
+    ifname = argv[2];
+    fp = "jscn_rslt.json";
+  } else if (argc == 2) {
+    ifname = argv[1];
+    fp = argv[2];
 
   } else {
     ERR = E2BIG;
